@@ -1,4 +1,4 @@
-# Installation and plugin creation
+# How to install Strapi and the create a new plugin
 
 ![exFabrica logo](https://cdn-images-1.medium.com/max/800/1*pfNdV8oin0fRe-EQKIaYyQ.png)
 
