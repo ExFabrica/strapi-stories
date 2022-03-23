@@ -16,7 +16,7 @@ To cover a maximum of purpose, we decide to use all these ways to create our awe
 •	We need to compile the plugin as a standalone application.
 •	We need to deploy the plugin.
 
-This repos includes all code to follow this guideline: [How to install Strapi and the create a new plugin](https://medium.com/p/65dbcd4b1b42)
+This repo includes all code to follow this guideline: [How to install Strapi and the create a new plugin](https://medium.com/p/65dbcd4b1b42)
 
 to install, seed and launch:
 
