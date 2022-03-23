@@ -1,4 +1,4 @@
-##Installation and plugin creation
+# Installation and plugin creation
 
 The new Strapi V4 plugin architecture can be used in many ways:
 
