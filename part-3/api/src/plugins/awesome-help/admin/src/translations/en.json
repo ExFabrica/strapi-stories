@@ -1,0 +1,19 @@
+{
+  "plugin.name": "Awesome Help",
+  "plugin.homepage.title": "Awesome Help",
+  "plugin.homepage.subtitle": "by exFabrica",
+  "plugin.help.runAnalysis": "Scan your Strapi Structure",
+  "plugin.help.analysisPending": "Scanning...",
+  "plugin.help.settings": "Settings",
+  "plugin.help.table.contentType": "Content-Type",
+  "plugin.help.table.fieldName": "Field Name",
+  "plugin.help.table.help": "Contextual Help",
+  "plugin.settings.title": "Awesome help general settings",
+  "plugin.settings.version": "v{version}",
+  "plugin.settings.general.title": "General settings",
+  "plugin.settings.enabled": "Enable display of contextual Help in content pages?",
+  "plugin.settings.enabled.descr": "Enable or disable the display of contextual Help in each content page",
+  "plugin.settings.button.save.label": "Save",
+  "plugin.settings.button.save.message": "Saved",
+  "plugin.settings.button.save.error": "Error in input"
+}

@@ -1,0 +1,19 @@
+{
+    "plugin.name": "Awesome Help",
+    "plugin.homepage.title": "Awesome Help",
+    "plugin.homepage.subtitle": "par exFabrica",
+    "plugin.help.runAnalysis": "Lancer l'analyse de votre structure Strapi",
+    "plugin.help.analysisPending": "Analyse en cours...",
+    "plugin.help.settings": "Settings",
+    "plugin.help.table.contentType": "Content-Type",
+    "plugin.help.table.fieldName": "Nom du Champ",
+    "plugin.help.table.help": "Aide contextuelle",
+    "plugin.settings.title": "Awesome help general settings",
+    "plugin.settings.version": "v{version}",
+    "plugin.settings.general.title": "General settings",
+    "plugin.settings.enabled": "Enable display of contextual Help in content pages?",
+    "plugin.settings.enabled.descr": "Enable or disable the display of contextual Help in each content page",
+    "plugin.settings.button.save.label": "Save",
+    "plugin.settings.button.save.message": "Saved",
+    "plugin.settings.button.save.error": "Error in input"
+}
