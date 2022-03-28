@@ -9,7 +9,8 @@ const zipPath = path.resolve("data.zip");
 const dataPath = path.resolve("data");
 const uploadDataPath = path.join(dataPath, "uploads");
 
-const uploadPath = path.join("public", "uploads");
+const publicPath = path.resolve("public");
+const uploadPath = path.join(publicPath, "uploads");
 const tmpPath = path.resolve(".tmp");
 
 const dotEnv = path.resolve(".env");
@@ -35,8 +36,7 @@ async function updateUid() {
       if (packageJSON.strapi.uuid.includes("FOODADVISOR")) return null;
 
       packageJSON.strapi.uuid =
-        `FOODADVISOR-${
-          process.env.GITPOD_WORKSPACE_URL ? "GITPOD-" : "LOCAL-"
+        `FOODADVISOR-${process.env.GITPOD_WORKSPACE_URL ? "GITPOD-" : "LOCAL-"
         }` + uuid();
 
       const data = JSON.stringify(packageJSON, null, 2);
@@ -61,9 +61,9 @@ async function seed() {
   }
 
   try {
-    await fse.emptyDir(uploadPath);
+    await fse.emptyDir(publicPath);
   } catch (err) {
-    console.log(`Failed to remove ${uploadPath}`);
+    console.log(`Failed to remove ${publicPath}`);
   }
 
   await new Promise((resolve) => {
