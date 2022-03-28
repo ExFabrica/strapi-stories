@@ -6,4 +6,14 @@ This repo includes all code to follow this guideline: [How to create a plugin co
 
 To install, seed and launch:
 
+API
+
+`cd api`
+
 `yarn && yarn seed && yarn develop`
+
+CLIENT
+
+`cd client`
+
+`yarn && yarn dev`
