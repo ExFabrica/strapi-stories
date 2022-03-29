@@ -30,24 +30,6 @@ const HomePage = (props) => {
   const { formatMessage } = useIntl();
   const { push } = useHistory();
 
-  // UseEffect (component mount)
-  useEffect(() => {
-    setResults([{
-      id: 1,
-      key: "",
-      contentType: "Article",
-      fieldName: "name",
-      help: ""
-    },
-    {
-      id: 2,
-      key: "",
-      contentType: "Article",
-      fieldName: "description",
-      help: ""
-    }]);
-  }, [])
-
   const handleSubmit = async () => {
     setIsAnalysisRunning(true);
     setIsLoading(true);
@@ -56,28 +38,24 @@ const HomePage = (props) => {
       setIsLoading(false);
       setResults([{
         id: 1,
-        key: "",
         contentType: "Article",
         fieldName: "name",
         help: ""
       },
       {
         id: 2,
-        key: "",
         contentType: "Article",
         fieldName: "description",
         help: ""
       },
       {
         id: 3,
-        key: "",
         contentType: "Restaurant",
         fieldName: "name",
         help: ""
       },
       {
         id: 4,
-        key: "",
         contentType: "Restaurant",
         fieldName: "description",
         help: ""
