@@ -1,0 +1,47 @@
+{
+  "kind": "collectionType",
+  "collectionName": "helps",
+  "info": {
+    "singularName": "help",
+    "pluralName": "helps",
+    "displayName": "help"
+  },
+  "options": {
+    "draftAndPublish": false,
+    "comment": ""
+  },
+  "pluginOptions": {
+    "content-manager": {
+      "visible": true
+    },
+    "content-type-builder": {
+      "visible": true
+    }
+  },
+  "attributes": {
+    "contentType": {
+      "type": "string"
+    },
+    "path" : {
+      "type": "string"
+    },
+    "helpContent": {
+      "type": "string"
+    },
+    "key": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string"
+    },
+    "container": {
+      "type": "string"
+    },
+    "zone": {
+      "type": "string"
+    },
+    "componentName": {
+      "type": "string"
+    }
+  }
+}
