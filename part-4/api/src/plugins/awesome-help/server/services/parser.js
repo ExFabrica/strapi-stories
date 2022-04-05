@@ -15,8 +15,10 @@ module.exports = ({ strapi }) => {
       switch (attributeValue.type) {
         case "text":
         case "string":
-        case "richtext":
-        case "number":
+        case "biginteger":
+        case "float":
+        case "decimal":
+        case "integer":
           switch (type) {
             case "component":
               item.attributes.push({ key: attributeKey, value: attributeValue, type: "text", container: "component", componentName: componentName });
