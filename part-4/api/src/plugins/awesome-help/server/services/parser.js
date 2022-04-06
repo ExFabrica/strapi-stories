@@ -21,16 +21,16 @@ module.exports = ({ strapi }) => {
         case "integer":
           switch (type) {
             case "component":
-              item.attributes.push({ key: attributeKey, value: attributeValue, type: "text", container: "component", componentName: componentName });
+              item.attributes.push({ key: attributeKey, value: attributeValue, container: "component", componentName: componentName });
               break;
             case "componentInZone":
-              item.attributes.push({ key: attributeKey, value: attributeValue, type: "text", container: "componentInZone", zone: zoneName, componentName: componentName });
+              item.attributes.push({ key: attributeKey, value: attributeValue, container: "componentInZone", zone: zoneName, componentName: componentName });
               break;
             case "nestedComponentInComponentInZone":
-              item.attributes.push({ key: attributeKey, value: attributeValue, type: "text", container: "nestedComponentInComponentInZone", zone: `${zoneName}/${parentComponentName}`, componentName: componentName });
+              item.attributes.push({ key: attributeKey, value: attributeValue, container: "nestedComponentInComponentInZone", zone: `${zoneName}/${parentComponentName}`, componentName: componentName });
               break;
             case "default":
-              item.attributes.push({ key: attributeKey, value: attributeValue, type: "text", container: "default" });
+              item.attributes.push({ key: attributeKey, value: attributeValue, container: "default" });
               break;
           }
         case "component":
