@@ -27,21 +27,6 @@
     },
     "helpContent": {
       "type": "string"
-    },
-    "key": {
-      "type": "string"
-    },
-    "type": {
-      "type": "string"
-    },
-    "container": {
-      "type": "string"
-    },
-    "zone": {
-      "type": "string"
-    },
-    "componentName": {
-      "type": "string"
     }
   }
 }
