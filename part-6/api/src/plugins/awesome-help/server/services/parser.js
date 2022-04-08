@@ -116,17 +116,19 @@ module.exports = ({ strapi }) => {
   };
   const mapHelpEntitiesFromAnalysedResults = (results) => {
     let helpEntities = [];
-    for (const contentType of results) {
-      for (const attribute of contentType.attributes) {
-        helpEntities.push({
-          helpContent: "",
-          path: getPath(attribute, contentType.uid),
-          contentType: contentType.uid,
-          fieldName: attribute.fieldName,
-          containerType: attribute.containerType,
-          zoneName: attribute.zoneName,
-          componentName: attribute.componentName
-        });
+    if (results && _.isArray(results)) {
+      for (const contentType of results) {
+        for (const attribute of contentType.attributes) {
+          helpEntities.push({
+            helpContent: "",
+            path: getPath(attribute, contentType.uid),
+            contentType: contentType.uid,
+            fieldName: attribute.fieldName,
+            containerType: attribute.containerType,
+            zoneName: attribute.zoneName,
+            componentName: attribute.componentName
+          });
+        }
       }
     }
     return helpEntities;
@@ -144,14 +146,21 @@ module.exports = ({ strapi }) => {
   const getAttributesFromStrapiContentType = () => {
     let potentialFields = [];
     let contentTypes = getContentTypes();
-    for (const contentType of contentTypes) {
-      let item = {
-        uid: contentType.uid,
-        kind: contentType.kind,
-        attributes: [],
+    if (contentTypes && contentTypes.length > 0) {
+      for (const contentType of contentTypes) {
+        let item = {
+          uid: contentType.uid,
+          kind: contentType.kind,
+          attributes: [],
+        }
+        getStructure(item, contentType, "default");
+        potentialFields.push(item);
       }
-      getStructure(item, contentType, "default");
-      potentialFields.push(item);
+    }
+    else {
+      const helps = await strapi.plugin("awesome-help").service("helpService").findMany();
+      if (helps && helps.length > 0)
+        await strapi.plugin("awesome-help").service("helpService").deleteAll();
     }
     const fields = potentialFields.filter(content => content.attributes.length > 0);
     return fields ?? [];
