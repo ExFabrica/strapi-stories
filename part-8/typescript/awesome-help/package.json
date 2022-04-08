@@ -1,0 +1,24 @@
+{
+  "name": "awesome-help",
+  "version": "0.0.0",
+  "description": "This is the description of the plugin.",
+  "strapi": {
+    "name": "Awesome Help",
+    "description": "This plugin enable to create a contextual help for all fields in your documents!",
+    "kind": "plugin"
+  },
+  "dependencies": {},
+  "author": {
+    "name": "exFabrica"
+  },
+  "maintainers": [
+    {
+      "name": "exFabrica"
+    }
+  ],
+  "engines": {
+    "node": ">=12.x.x <=16.x.x",
+    "npm": ">=6.0.0"
+  },
+  "license": "MIT"
+}
