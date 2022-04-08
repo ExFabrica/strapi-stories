@@ -1,36 +1,62 @@
+
+
+
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 // Context from Strapi Helper.
 import { useCMEditViewDataManager } from '@strapi/helper-plugin';
+// Interface
+import IHelpEntity from '../../../../server/interfaces/help.interface';
 // Css for tooltip component
 import './strapi-tooltip.css';
-import IHelpEntity from '../../../../server/interfaces/help.interface';
 
-export const StrapiUIDecorator = ({ helpItems }) => {
+export const StrapiUIDecorator = ({ helpItems, enable }) => {
   const { modifiedData } = useCMEditViewDataManager();
   const [nodeElementsCollectionCount, setNodeElementsCollectionCount] = useState<number>(0);
   const [structureFields, setStructureFields] = useState<IHelpEntity[]>([]);
+  const [innerInterval, setInnerInterval] = useState(0);
 
   useEffect(() => {
     htmlLookup();
   }, [nodeElementsCollectionCount, modifiedData]);
 
   useEffect(() => {
-    if (helpItems) {
-      setStructureFields(helpItems);
-      countAllTags();
-    }
-
-    const interval = window.setInterval(() => {
-      countAllTags();
-    }, 500);
-
     return () => {
-      clearInterval(interval);
+      reset();
     };
   }, []);
 
-  const countAllTags = (): void => {
-    const labelNodes: any = document.querySelectorAll("label");
+  useEffect(() => {
+    return () => {
+      clearInterval(innerInterval);
+    };
+  }, [innerInterval]);
+
+  useEffect(() => {
+    if (!enable) {
+      reset();
+    }
+    else {
+      setStructureFields(helpItems);
+      const interval = window.setInterval(() => {
+        countAllTags();
+      }, 500);
+      setInnerInterval(interval);
+    }
+  }, [enable]);
+
+  const reset = () => {
+    setStructureFields([]);
+    setNodeElementsCollectionCount(0);
+    clearInterval(innerInterval);
+    setInnerInterval(0);
+    let labels = document.querySelectorAll('[id^="awesome_help_"]');
+    labels.forEach(label => {
+      label.remove();
+    });
+  };
+  const countAllTags = () => {
+    const labelNodes = document.querySelectorAll("label");
     const labelNodeList = [...labelNodes];
     const labelsInnerText = labelNodeList.map(item => item.innerText);
     if (labelsInnerText && labelsInnerText.length > 0) {
@@ -38,7 +64,7 @@ export const StrapiUIDecorator = ({ helpItems }) => {
       setNodeElementsCollectionCount(innerTextString.length);
     }
   };
-  const htmlLookup = (): void => {
+  const htmlLookup = () => {
     if (structureFields) {
       for (const structureField of structureFields) {
         //field is a component ?
@@ -55,7 +81,7 @@ export const StrapiUIDecorator = ({ helpItems }) => {
       }
     }
   };
-  const createTooltipInZone = (structureField): void => {
+  const createTooltipInZone = (structureField) => {
     //field directly accesible in zoneName
     if (!structureField.zoneName.includes("/")) {
       if (modifiedData && modifiedData[structureField.zoneName]) {
@@ -79,7 +105,7 @@ export const StrapiUIDecorator = ({ helpItems }) => {
           if (documentParentComponent && documentParentComponent.length > 0) {
             const innerComponent = documentParentComponent[0][structureField.componentName];
             // repeatable component
-            if (Array.isArray(innerComponent)) {
+            if (_.isArray(innerComponent)) {
               innerComponent.forEach((element, index) => {
                 createTooltip(`${zoneName}.${componentIndex}.${structureField.componentName}.${index}.${structureField.fieldName}`, structureField);
               });
@@ -92,7 +118,7 @@ export const StrapiUIDecorator = ({ helpItems }) => {
       }
     }
   };
-  const createTooltip = (fieldToSearch, structureField): void => {
+  const createTooltip = (fieldToSearch, structureField) => {
     const query = `label[for='${fieldToSearch}']`;
     const label = document.querySelector(query);
     if (label) {
@@ -113,4 +139,5 @@ export const StrapiUIDecorator = ({ helpItems }) => {
 
 StrapiUIDecorator.defaultProps = {
   helpItems: [],
+  enable: PropTypes.bool.isRequired,
 };

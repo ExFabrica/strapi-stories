@@ -1,11 +1,8 @@
-import ISettingsEntity from "../interfaces/settings.interface";
-
 /**
  *   Help controller
  */
 export default ({ strapi }) => {
   const helpService = strapi.plugin("awesome-help").service("helpService");
-  const settingsService = strapi.plugin("awesome-help").service("settingsService");
   const findMany = async (ctx) => {
     try {
       ctx.body = await helpService.findMany(ctx.query);
@@ -16,16 +13,15 @@ export default ({ strapi }) => {
   };
   const findManyByContentType = async (ctx) => {
     const { slug } = ctx.params;
-    const settings: ISettingsEntity = await settingsService.getSettings();
     try {
-      ctx.body = settings.enabled ? await helpService.findMany({
+      ctx.body = await helpService.findMany({
         where: {
           $and: [
             { contentType: { $eq: slug } },
             { helpContent: { $not: "" }, }
           ]
         }
-      }) : [];
+      });
     }
     catch (exp) {
       throw exp;
