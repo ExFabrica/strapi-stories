@@ -26,5 +26,9 @@
   "plugin.settings.enabled.descr": "Active ou désactive l'aide contextuelle dans les documents.",
   "plugin.settings.button.save.label": "Sauvegarder",
   "plugin.settings.button.save.message": "Paramètres sauvegardés",
-  "plugin.settings.button.save.error": "Erreur pendant le processus de sauvegarde"
+  "plugin.settings.button.save.error": "Erreur pendant le processus de sauvegarde",
+  "plugin.help.zone.title": "PLUGIN AWESOME HELP",
+  "plugin.help.zone.available": "Aide contextuelle disponible :",
+  "plugin.help.zone.button.disable": "Désactiver l'aide contextuelle",
+  "plugin.help.zone.button.enable": "Activer l'aide contextuelle"
 }

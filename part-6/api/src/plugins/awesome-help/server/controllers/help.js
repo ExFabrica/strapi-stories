@@ -13,16 +13,15 @@ module.exports = ({ strapi }) => {
   };
   const findManyByContentType = async (ctx) => {
     const { slug } = ctx.params;
-    const settings = await settingsService.getSettings();
     try {
-      ctx.body = settings.enabled ? await helpService.findMany({
+      ctx.body = await helpService.findMany({
         where: {
           $and: [
             { contentType: { $eq: slug } },
             { helpContent: { $not: "" }, }
           ]
         }
-      }) : [];
+      });
     }
     catch (exp) {
       throw exp;

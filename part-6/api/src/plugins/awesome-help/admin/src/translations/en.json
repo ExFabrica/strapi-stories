@@ -27,5 +27,9 @@
   "plugin.settings.button.save.label": "Save",
   "plugin.settings.button.save.message": "Settings saved",
   "plugin.settings.button.save.error": "Error duing save process",
-  "plugin.homepage.structure.changed": "Your Strapi structure changed, please click on 'Scan your Strapi internal structure' to reflect change in help entities collection."
+  "plugin.homepage.structure.changed": "Your Strapi structure changed, please click on 'Scan your Strapi internal structure' to reflect change in help entities collection.",
+  "plugin.help.zone.title": "AWESOME HELP PLUGIN",
+  "plugin.help.zone.available": "Available Inline help:",
+  "plugin.help.zone.button.disable": "Disable Inline Help",
+  "plugin.help.zone.button.enable": "Enable Inline Help"
 }

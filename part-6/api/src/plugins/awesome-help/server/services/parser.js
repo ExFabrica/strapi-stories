@@ -116,19 +116,17 @@ module.exports = ({ strapi }) => {
   };
   const mapHelpEntitiesFromAnalysedResults = (results) => {
     let helpEntities = [];
-    if (results && _.isArray(results)) {
-      for (const contentType of results) {
-        for (const attribute of contentType.attributes) {
-          helpEntities.push({
-            helpContent: "",
-            path: getPath(attribute, contentType.uid),
-            contentType: contentType.uid,
-            fieldName: attribute.fieldName,
-            containerType: attribute.containerType,
-            zoneName: attribute.zoneName,
-            componentName: attribute.componentName
-          });
-        }
+    for (const contentType of results) {
+      for (const attribute of contentType.attributes) {
+        helpEntities.push({
+          helpContent: "",
+          path: getPath(attribute, contentType.uid),
+          contentType: contentType.uid,
+          fieldName: attribute.fieldName,
+          containerType: attribute.containerType,
+          zoneName: attribute.zoneName,
+          componentName: attribute.componentName
+        });
       }
     }
     return helpEntities;
@@ -143,7 +141,7 @@ module.exports = ({ strapi }) => {
         await synchronize(fields);
     }
   };
-  const getAttributesFromStrapiContentType = () => {
+  const getAttributesFromStrapiContentType = async () => {
     let potentialFields = [];
     let contentTypes = getContentTypes();
     if (contentTypes && contentTypes.length > 0) {
@@ -167,7 +165,7 @@ module.exports = ({ strapi }) => {
   }
   const parse = async () => {
     //await strapi.plugin("awesome-help").service("helpService").deleteAll();
-    const attributes = getAttributesFromStrapiContentType();
+    const attributes = await getAttributesFromStrapiContentType();
     await createHelpEntities(attributes);
   };
   return {
