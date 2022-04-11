@@ -34,6 +34,7 @@ const HomePage = (props) => {
   const toggleNotification = useNotification();
 
   useEffect(() => {
+    console.log(props);
     setIsLoading(true);
     ParserProxy.parse().then(() => {
       HelpProxy.get().then((helpEntities) => {

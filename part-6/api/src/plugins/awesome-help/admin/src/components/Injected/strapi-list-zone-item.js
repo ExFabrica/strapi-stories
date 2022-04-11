@@ -18,7 +18,7 @@ import SettingsProxy from "../../api/settings-proxy";
 // Strapi UI Decorator component
 import { StrapiUIDecorator } from './strapi-ui-decorator'
 
-export const StrapiListZoneItem = () => {
+export const StrapiListZoneItem = ({strapi}) => {
   const { formatMessage } = useIntl();
   const { slug } = useCMEditViewDataManager();
   const [results, setResults] = useState([]);
